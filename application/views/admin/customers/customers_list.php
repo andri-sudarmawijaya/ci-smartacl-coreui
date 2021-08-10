@@ -12,7 +12,7 @@
         <?php $this->load->view('_layouts/head'); ?>
         <link rel="stylesheet" type="text/css" href="/vendors/DataTables/datatables.min.css"/>
         <link rel="stylesheet" type="text/css" href="/vendors/DataTables/Select-1.3.3/css/select.bootstrap4.min.css"/>
-        <link rel="stylesheet" type="text/css" href="/vendors/DataTables/Select-1.3.3/css/select.dataTables.min.css"/>
+        <!-- <link rel="stylesheet" type="text/css" href="/vendors/DataTables/Select-1.3.3/css/select.dataTables.min.css"/> -->
     </head>
     <body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
     <?php $this->load->view('_layouts/header'); ?>
@@ -177,10 +177,44 @@
                         var length = info.iLength;
                         var index = page * length + (iDisplayIndex + 1);
                         $('td:eq(0)', row).html(index);
+                    },
+
+
+                    columnDefs: [
+                        {
+                            targets: 1,
+                            checkboxes: {
+                            selectRow: true
+                            }
+                        }
+                    ],
+                    select: {
+                        style: 'multi',
+                        selector: 'td:nth-child(2)'
                     }
-                });
+
+
+                },);
             });
+            
+            t.on('select.dt', function(){
+                getDataSelected(),
+            })
+            
+            function getDataSelected(){
+                var array = [];
+                t.rows('.selected').every(function(rowIdx) {
+                array.push(t.row(rowIdx).data())
+                })
+            }
+
+
         </script>
+
+
+
+
+
 
         <script type="text/javascript">
             $(function () {
