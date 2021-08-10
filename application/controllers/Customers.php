@@ -192,6 +192,27 @@ class Customers extends CI_Controller
         }
     }
 
+    public function updateStatus() 
+    {
+        $jumlah_data = $this->input->post('jumUpdateStatus');
+        $status = $this->input->post('status');
+
+        $id_data = $this->input->post('id');
+        //echo $jumlah_data;
+        $records = explode(',',$id_data); 
+        $result = 0;
+        foreach( $records as $row){
+           $update = $this->Customers_model->update_status($row, $status);
+           if($update){
+                $result++;
+            }
+            
+        }
+        echo $result;
+        
+
+    }
+
     public function _rules() 
     {
         $this->form_validation->set_rules('customerName', 'customername', 'trim|required');

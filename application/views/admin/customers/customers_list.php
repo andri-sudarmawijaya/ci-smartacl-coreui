@@ -71,6 +71,16 @@
                                         </thead>
                                     
                                     </table>
+                                    <input type='hidden' id='hasilSelect' class='form-control'>
+                                    <div id='updateStatus'>
+                                        <label for='selectStatus' class='form-label'> Pilih Status</label>
+                                        <select id='selectStatus' class='form-control'>
+                                            <option value=''>_Pilih Status_</option>
+                                            <option value='Basic'>Basic</option>
+                                            <option value='Standard'>Standard</option>
+                                            <option value='Premium'>Premium</option>
+                                        </select>
+                                    </div>
 
                                 </div>
                             </div>
@@ -126,9 +136,11 @@
         <?php $this->load->view('_layouts/script'); ?>
 
         <script type="text/javascript" src="/vendors/DataTables/datatables.min.js"></script>
+        <script type="text/javascript" src="/vendors/DataTables/Select-1.3.3/js/dataTables.select.min.js"></script>
+        <script type="text/javascript" src="/vendors/DataTables/Select-1.3.3/js/select.bootstrap4.min.js"></script>
         
         <script type="text/javascript">
-            $(document).ready(function() {
+            //$(document).ready(function() {
                 $.fn.dataTableExt.oApi.fnPagingInfo = function(oSettings)
                 {
                     return {
@@ -142,7 +154,7 @@
                     };
                 };
 
-                var t = $("#mytable").dataTable({
+                var t = $("#mytable").DataTable({
                     initComplete: function() {
                         var api = this.api();
                         $('#mytable_filter input')
@@ -182,7 +194,7 @@
 
                     columnDefs: [
                         {
-                            targets: 1,
+                            targets: 0,
                             checkboxes: {
                             selectRow: true
                             }
@@ -195,19 +207,59 @@
 
 
                 },);
-            });
+            //}
+            //);
             
             t.on('select.dt', function(){
-                getDataSelected(),
+                getDataSelected()
             })
-            
+            t.on('deselect', function(){
+                getDataSelected()
+            })
+                
+            $('#updateStatus').hide()
+            var jum_data = '';
             function getDataSelected(){
+
+                $('#updateStatus').hide()
                 var array = [];
                 t.rows('.selected').every(function(rowIdx) {
                 array.push(t.row(rowIdx).data())
                 })
+
+                var dk = [];        
+                array.forEach(function(entry) {
+                    dk.push(entry.customerNumber);            
+                })
+                
+                $('#hasilSelect').val(dk)
+                
+                jum_data = t.rows({selected:true}).count()
+                if(jum_data >= 1){
+                    $('#updateStatus').show()
+                }
+                //console.log(array)
             }
 
+            $('#selectStatus').on('change', function(){
+                if($(this).val() !== ''){
+                    if(jum_data >= 1){
+                        $.ajax({
+                            type:'POST',
+                            url: '<?=base_url("customers/updateStatus");?>',
+                            dataType : 'JSON',
+                            data : {id:$('#hasilSelect').val(), jumUpdateStatus : jum_data, status:$(this).val()}, 
+                            success : function(response){
+                                console.log(response)
+                                t.ajax.reload()
+                            }
+                        })
+                    }
+                    else{
+                        alert('tidak ada data')
+                    }
+                }
+            })
 
         </script>
 
