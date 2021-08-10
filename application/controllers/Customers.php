@@ -43,21 +43,21 @@ class Customers extends CI_Controller
         $row = $this->Customers_model->get_by_id($id);
         if ($row) {
             $data = array(
-		'customerNumber' => $row->customerNumber,
-		'customerName' => $row->customerName,
-		'contactLastName' => $row->contactLastName,
-		'contactFirstName' => $row->contactFirstName,
-		'phone' => $row->phone,
-		'addressLine1' => $row->addressLine1,
-		'addressLine2' => $row->addressLine2,
-		'city' => $row->city,
-		'state' => $row->state,
-		'postalCode' => $row->postalCode,
-		'country' => $row->country,
-		'salesRepEmployeeNumber' => $row->salesRepEmployeeNumber,
-		'creditLimit' => $row->creditLimit,
-	    );
-        $data['title'] = $row->customerName;
+		        'customerNumber' => $row->customerNumber,
+		        'customerName' => $row->customerName,
+		        'contactLastName' => $row->contactLastName,
+		        'contactFirstName' => $row->contactFirstName,
+		        'phone' => $row->phone,
+		        'addressLine1' => $row->addressLine1,
+		        'addressLine2' => $row->addressLine2,
+		        'city' => $row->city,
+		        'state' => $row->state,
+		        'postalCode' => $row->postalCode,
+		        'country' => $row->country,
+		        'salesRepEmployeeNumber' => $row->salesRepEmployeeNumber,
+		        'creditLimit' => $row->creditLimit,
+	        );
+            $data['title'] = $row->customerName;
             $this->load->view('admin/customers/customers_read', $data);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
@@ -70,21 +70,21 @@ class Customers extends CI_Controller
         $data = array(
             'button' => 'Create',
             'action' => site_url('customers/create_action'),
-	    'customerNumber' => set_value('customerNumber'),
-	    'customerName' => set_value('customerName'),
-	    'contactLastName' => set_value('contactLastName'),
-	    'contactFirstName' => set_value('contactFirstName'),
-	    'phone' => set_value('phone'),
-	    'addressLine1' => set_value('addressLine1'),
-	    'addressLine2' => set_value('addressLine2'),
-	    'city' => set_value('city'),
-	    'state' => set_value('state'),
-	    'postalCode' => set_value('postalCode'),
-	    'country' => set_value('country'),
-	    'salesRepEmployeeNumber' => set_value('salesRepEmployeeNumber'),
-	    'creditLimit' => set_value('creditLimit'),
-	);
-        $this->load->view('customers/customers_form', $data);
+	        'customerNumber' => set_value('customerNumber'),
+	        'customerName' => set_value('customerName'),
+	        'contactLastName' => set_value('contactLastName'),
+	        'contactFirstName' => set_value('contactFirstName'),
+	        'phone' => set_value('phone'),
+	        'addressLine1' => set_value('addressLine1'),
+	        'addressLine2' => set_value('addressLine2'),
+	        'city' => set_value('city'),
+	        'state' => set_value('state'),
+	        'postalCode' => set_value('postalCode'),
+	        'country' => set_value('country'),
+	        'salesRepEmployeeNumber' => set_value('salesRepEmployeeNumber'),
+	        'creditLimit' => set_value('creditLimit'),
+	    );
+        $this->load->view('admin/customers/customers_form', $data);
     }
     
     public function create_action() 
@@ -95,19 +95,19 @@ class Customers extends CI_Controller
             $this->create();
         } else {
             $data = array(
-		'customerName' => $this->input->post('customerName',TRUE),
-		'contactLastName' => $this->input->post('contactLastName',TRUE),
-		'contactFirstName' => $this->input->post('contactFirstName',TRUE),
-		'phone' => $this->input->post('phone',TRUE),
-		'addressLine1' => $this->input->post('addressLine1',TRUE),
-		'addressLine2' => $this->input->post('addressLine2',TRUE),
-		'city' => $this->input->post('city',TRUE),
-		'state' => $this->input->post('state',TRUE),
-		'postalCode' => $this->input->post('postalCode',TRUE),
-		'country' => $this->input->post('country',TRUE),
-		'salesRepEmployeeNumber' => $this->input->post('salesRepEmployeeNumber',TRUE),
-		'creditLimit' => $this->input->post('creditLimit',TRUE),
-	    );
+		        'customerName' => $this->input->post('customerName',TRUE),
+		        'contactLastName' => $this->input->post('contactLastName',TRUE),
+		        'contactFirstName' => $this->input->post('contactFirstName',TRUE),
+		        'phone' => $this->input->post('phone',TRUE),
+		        'addressLine1' => $this->input->post('addressLine1',TRUE),
+		        'addressLine2' => $this->input->post('addressLine2',TRUE),
+		        'city' => $this->input->post('city',TRUE),
+		        'state' => $this->input->post('state',TRUE),
+		        'postalCode' => $this->input->post('postalCode',TRUE),
+		        'country' => $this->input->post('country',TRUE),
+		        'salesRepEmployeeNumber' => $this->input->post('salesRepEmployeeNumber',TRUE),
+		        'creditLimit' => $this->input->post('creditLimit',TRUE),
+	        );
 
             $this->Customers_model->insert($data);
             $this->session->set_flashdata('message', 'Create Record Success');
@@ -123,21 +123,22 @@ class Customers extends CI_Controller
             $data = array(
                 'button' => 'Update',
                 'action' => site_url('customers/update_action'),
-		'customerNumber' => set_value('customerNumber', $row->customerNumber),
-		'customerName' => set_value('customerName', $row->customerName),
-		'contactLastName' => set_value('contactLastName', $row->contactLastName),
-		'contactFirstName' => set_value('contactFirstName', $row->contactFirstName),
-		'phone' => set_value('phone', $row->phone),
-		'addressLine1' => set_value('addressLine1', $row->addressLine1),
-		'addressLine2' => set_value('addressLine2', $row->addressLine2),
-		'city' => set_value('city', $row->city),
-		'state' => set_value('state', $row->state),
-		'postalCode' => set_value('postalCode', $row->postalCode),
-		'country' => set_value('country', $row->country),
-		'salesRepEmployeeNumber' => set_value('salesRepEmployeeNumber', $row->salesRepEmployeeNumber),
-		'creditLimit' => set_value('creditLimit', $row->creditLimit),
-	    );
-            $this->load->view('customers/customers_form', $data);
+		        'customerNumber' => set_value('customerNumber', $row->customerNumber),
+		        'customerName' => set_value('customerName', $row->customerName),
+		        'contactLastName' => set_value('contactLastName', $row->contactLastName),
+		        'contactFirstName' => set_value('contactFirstName', $row->contactFirstName),
+		        'phone' => set_value('phone', $row->phone),
+		        'addressLine1' => set_value('addressLine1', $row->addressLine1),
+		        'addressLine2' => set_value('addressLine2', $row->addressLine2),
+		        'city' => set_value('city', $row->city),
+		        'state' => set_value('state', $row->state),
+		        'postalCode' => set_value('postalCode', $row->postalCode),
+		        'country' => set_value('country', $row->country),
+		        'salesRepEmployeeNumber' => set_value('salesRepEmployeeNumber', $row->salesRepEmployeeNumber),
+		        'creditLimit' => set_value('creditLimit', $row->creditLimit),
+	        );
+            $data['title'] = 'Update '. $row->customerName . ' Data';
+            $this->load->view('admin/customers/customers_form', $data);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
             redirect(site_url('customers'));

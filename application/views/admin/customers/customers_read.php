@@ -17,7 +17,7 @@
 
         <div class="app-body" id="pjax-container">
     
-        <?php $this->load->view('_layouts/sidebar'); ?>
+        	<?php $this->load->view('_layouts/sidebar'); ?>
     
             <main class="main" >
             <?php $this->load->view('_layouts/breadcrumb'); ?>
