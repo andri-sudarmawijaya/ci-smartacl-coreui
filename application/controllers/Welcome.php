@@ -19,7 +19,7 @@ class Welcome extends CI_Controller {
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
 	public function index()
-	{   $data['title'] = 'Selamat Datang';
+	{   $data['title'] = 'Welcome to CodeIgniter !';
 		$this->load->view('welcome_message', $data);
 	}
 }
