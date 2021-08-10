@@ -51,6 +51,7 @@ class Customers extends CI_Controller
 		        'addressLine1' => $row->addressLine1,
 		        'addressLine2' => $row->addressLine2,
 		        'city' => $row->city,
+		        'status' => $row->status,
 		        'state' => $row->state,
 		        'postalCode' => $row->postalCode,
 		        'country' => $row->country,
@@ -78,6 +79,7 @@ class Customers extends CI_Controller
 	        'addressLine1' => set_value('addressLine1'),
 	        'addressLine2' => set_value('addressLine2'),
 	        'city' => set_value('city'),
+		    'status' => set_value('state', $row->status),
 	        'state' => set_value('state'),
 	        'postalCode' => set_value('postalCode'),
 	        'country' => set_value('country'),
@@ -102,6 +104,7 @@ class Customers extends CI_Controller
 		        'addressLine1' => $this->input->post('addressLine1',TRUE),
 		        'addressLine2' => $this->input->post('addressLine2',TRUE),
 		        'city' => $this->input->post('city',TRUE),
+		        'status' => set_value('state', $row->status),
 		        'state' => $this->input->post('state',TRUE),
 		        'postalCode' => $this->input->post('postalCode',TRUE),
 		        'country' => $this->input->post('country',TRUE),
@@ -131,6 +134,7 @@ class Customers extends CI_Controller
 		        'addressLine1' => set_value('addressLine1', $row->addressLine1),
 		        'addressLine2' => set_value('addressLine2', $row->addressLine2),
 		        'city' => set_value('city', $row->city),
+		        'status' => set_value('status', $row->status),
 		        'state' => set_value('state', $row->state),
 		        'postalCode' => set_value('postalCode', $row->postalCode),
 		        'country' => set_value('country', $row->country),
@@ -153,19 +157,20 @@ class Customers extends CI_Controller
             $this->update($this->input->post('customerNumber', TRUE));
         } else {
             $data = array(
-		'customerName' => $this->input->post('customerName',TRUE),
-		'contactLastName' => $this->input->post('contactLastName',TRUE),
-		'contactFirstName' => $this->input->post('contactFirstName',TRUE),
-		'phone' => $this->input->post('phone',TRUE),
-		'addressLine1' => $this->input->post('addressLine1',TRUE),
-		'addressLine2' => $this->input->post('addressLine2',TRUE),
-		'city' => $this->input->post('city',TRUE),
-		'state' => $this->input->post('state',TRUE),
-		'postalCode' => $this->input->post('postalCode',TRUE),
-		'country' => $this->input->post('country',TRUE),
-		'salesRepEmployeeNumber' => $this->input->post('salesRepEmployeeNumber',TRUE),
-		'creditLimit' => $this->input->post('creditLimit',TRUE),
-	    );
+                'customerName' => $this->input->post('customerName',TRUE),
+                'contactLastName' => $this->input->post('contactLastName',TRUE),
+                'contactFirstName' => $this->input->post('contactFirstName',TRUE),
+                'phone' => $this->input->post('phone',TRUE),
+                'addressLine1' => $this->input->post('addressLine1',TRUE),
+                'addressLine2' => $this->input->post('addressLine2',TRUE),
+                'city' => $this->input->post('city',TRUE),
+                'status' => $this->input->post('status',TRUE),
+                'state' => $this->input->post('state',TRUE),
+                'postalCode' => $this->input->post('postalCode',TRUE),
+                'country' => $this->input->post('country',TRUE),
+                'salesRepEmployeeNumber' => $this->input->post('salesRepEmployeeNumber',TRUE),
+                'creditLimit' => $this->input->post('creditLimit',TRUE),
+            );
 
             $this->Customers_model->update($this->input->post('customerNumber', TRUE), $data);
             $this->session->set_flashdata('message', 'Update Record Success');
@@ -189,21 +194,22 @@ class Customers extends CI_Controller
 
     public function _rules() 
     {
-	$this->form_validation->set_rules('customerName', 'customername', 'trim|required');
-	$this->form_validation->set_rules('contactLastName', 'contactlastname', 'trim|required');
-	$this->form_validation->set_rules('contactFirstName', 'contactfirstname', 'trim|required');
-	$this->form_validation->set_rules('phone', 'phone', 'trim|required');
-	$this->form_validation->set_rules('addressLine1', 'addressline1', 'trim|required');
-	$this->form_validation->set_rules('addressLine2', 'addressline2', 'trim|required');
-	$this->form_validation->set_rules('city', 'city', 'trim|required');
-	$this->form_validation->set_rules('state', 'state', 'trim|required');
-	$this->form_validation->set_rules('postalCode', 'postalcode', 'trim|required');
-	$this->form_validation->set_rules('country', 'country', 'trim|required');
-	$this->form_validation->set_rules('salesRepEmployeeNumber', 'salesrepemployeenumber', 'trim|required');
-	$this->form_validation->set_rules('creditLimit', 'creditlimit', 'trim|required|numeric');
+        $this->form_validation->set_rules('customerName', 'customername', 'trim|required');
+        $this->form_validation->set_rules('contactLastName', 'contactlastname', 'trim|required');
+        $this->form_validation->set_rules('contactFirstName', 'contactfirstname', 'trim|required');
+        $this->form_validation->set_rules('phone', 'phone', 'trim|required');
+        $this->form_validation->set_rules('addressLine1', 'addressline1', 'trim|required');
+        $this->form_validation->set_rules('addressLine2', 'addressline2', 'trim|required');
+        $this->form_validation->set_rules('city', 'city', 'trim|required');
+        $this->form_validation->set_rules('status', 'status', 'trim|required');
+        $this->form_validation->set_rules('state', 'state', 'trim|required');
+        $this->form_validation->set_rules('postalCode', 'postalcode', 'trim|required');
+        $this->form_validation->set_rules('country', 'country', 'trim|required');
+        $this->form_validation->set_rules('salesRepEmployeeNumber', 'salesrepemployeenumber', 'trim|required');
+        $this->form_validation->set_rules('creditLimit', 'creditlimit', 'trim|required|numeric');
 
-	$this->form_validation->set_rules('customerNumber', 'customerNumber', 'trim');
-	$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
+        $this->form_validation->set_rules('customerNumber', 'customerNumber', 'trim');
+        $this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
     }
 
     public function excel()
@@ -235,6 +241,7 @@ class Customers extends CI_Controller
 	xlsWriteLabel($tablehead, $kolomhead++, "AddressLine1");
 	xlsWriteLabel($tablehead, $kolomhead++, "AddressLine2");
 	xlsWriteLabel($tablehead, $kolomhead++, "City");
+	xlsWriteLabel($tablehead, $kolomhead++, "Status");
 	xlsWriteLabel($tablehead, $kolomhead++, "State");
 	xlsWriteLabel($tablehead, $kolomhead++, "PostalCode");
 	xlsWriteLabel($tablehead, $kolomhead++, "Country");
@@ -253,6 +260,7 @@ class Customers extends CI_Controller
 	    xlsWriteLabel($tablebody, $kolombody++, $data->addressLine1);
 	    xlsWriteLabel($tablebody, $kolombody++, $data->addressLine2);
 	    xlsWriteLabel($tablebody, $kolombody++, $data->city);
+	    xlsWriteLabel($tablebody, $kolombody++, $data->status);
 	    xlsWriteLabel($tablebody, $kolombody++, $data->state);
 	    xlsWriteLabel($tablebody, $kolombody++, $data->postalCode);
 	    xlsWriteLabel($tablebody, $kolombody++, $data->country);

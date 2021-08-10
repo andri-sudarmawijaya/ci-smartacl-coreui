@@ -86,6 +86,13 @@
                                             </div>
                                         </div>
                                         <div class="form-group form-row"">
+                                            <label for="status" class="col-form-label col-sm-3">status</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" name="status" id="status" placeholder="status" value="<?php echo $status; ?>" />
+                                                <small class="form-text text-muted w-100">Please input status value <?php echo form_error('status') ?></small>
+                                            </div>
+                                        </div>
+                                        <div class="form-group form-row"">
                                             <label for="state" class="col-form-label col-sm-3">State</label>
                                             <div class="col-sm-9">
                                                 <input type="text" class="form-control" name="state" id="state" placeholder="State" value="<?php echo $state; ?>" />

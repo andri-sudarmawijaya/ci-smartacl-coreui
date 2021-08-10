@@ -65,7 +65,7 @@
                                         <th>Phone</th>
                                         <th>AddressLine1</th>
                                         <th>City</th>
-                                        <th>State</th>
+                                        <th>Status</th>
                                         <th width="200px">Action</th>
                                             </tr>
                                         </thead>
@@ -163,7 +163,7 @@
                         {
                             "data": "customerNumber",
                             "orderable": false
-                        },{"data": "customerName"},{"data": "phone"},{"data": "addressLine1"},{"data": "city"},{"data": "state"},
+                        },{"data": "customerName"},{"data": "phone"},{"data": "addressLine1"},{"data": "city"},{"data": "status"},
                         {
                             "data" : "action",
                             "orderable": false,

@@ -17,7 +17,7 @@ class Customers_model extends CI_Model
 
     // datatables
     function json() {
-        $this->datatables->select('customerNumber,customerName,contactLastName,contactFirstName,phone,addressLine1,addressLine2,city,state,postalCode,country,salesRepEmployeeNumber,creditLimit');
+        $this->datatables->select('customerNumber,customerName,contactLastName,contactFirstName,phone,addressLine1,addressLine2,city,status,state,postalCode,country,salesRepEmployeeNumber,creditLimit');
         $this->datatables->from('customers');
         //add this line for join
         //$this->datatables->join('table2', 'customers.field = table2.field');
@@ -42,19 +42,20 @@ class Customers_model extends CI_Model
     // get total rows
     function total_rows($q = NULL) {
         $this->db->like('customerNumber', $q);
-	$this->db->or_like('customerName', $q);
-	$this->db->or_like('contactLastName', $q);
-	$this->db->or_like('contactFirstName', $q);
-	$this->db->or_like('phone', $q);
-	$this->db->or_like('addressLine1', $q);
-	$this->db->or_like('addressLine2', $q);
-	$this->db->or_like('city', $q);
-	$this->db->or_like('state', $q);
-	$this->db->or_like('postalCode', $q);
-	$this->db->or_like('country', $q);
-	$this->db->or_like('salesRepEmployeeNumber', $q);
-	$this->db->or_like('creditLimit', $q);
-	$this->db->from($this->table);
+        $this->db->or_like('customerName', $q);
+        $this->db->or_like('contactLastName', $q);
+        $this->db->or_like('contactFirstName', $q);
+        $this->db->or_like('phone', $q);
+        $this->db->or_like('addressLine1', $q);
+        $this->db->or_like('addressLine2', $q);
+        $this->db->or_like('city', $q);
+        $this->db->or_like('status', $q);
+        $this->db->or_like('state', $q);
+        $this->db->or_like('postalCode', $q);
+        $this->db->or_like('country', $q);
+        $this->db->or_like('salesRepEmployeeNumber', $q);
+        $this->db->or_like('creditLimit', $q);
+        $this->db->from($this->table);
         return $this->db->count_all_results();
     }
 
@@ -62,19 +63,20 @@ class Customers_model extends CI_Model
     function get_limit_data($limit, $start = 0, $q = NULL) {
         $this->db->order_by($this->id, $this->order);
         $this->db->like('customerNumber', $q);
-	$this->db->or_like('customerName', $q);
-	$this->db->or_like('contactLastName', $q);
-	$this->db->or_like('contactFirstName', $q);
-	$this->db->or_like('phone', $q);
-	$this->db->or_like('addressLine1', $q);
-	$this->db->or_like('addressLine2', $q);
-	$this->db->or_like('city', $q);
-	$this->db->or_like('state', $q);
-	$this->db->or_like('postalCode', $q);
-	$this->db->or_like('country', $q);
-	$this->db->or_like('salesRepEmployeeNumber', $q);
-	$this->db->or_like('creditLimit', $q);
-	$this->db->limit($limit, $start);
+        $this->db->or_like('customerName', $q);
+        $this->db->or_like('contactLastName', $q);
+        $this->db->or_like('contactFirstName', $q);
+        $this->db->or_like('phone', $q);
+        $this->db->or_like('addressLine1', $q);
+        $this->db->or_like('addressLine2', $q);
+        $this->db->or_like('city', $q);
+        $this->db->or_like('status', $q);
+        $this->db->or_like('state', $q);
+        $this->db->or_like('postalCode', $q);
+        $this->db->or_like('country', $q);
+        $this->db->or_like('salesRepEmployeeNumber', $q);
+        $this->db->or_like('creditLimit', $q);
+        $this->db->limit($limit, $start);
         return $this->db->get($this->table)->result();
     }
 
