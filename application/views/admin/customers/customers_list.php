@@ -157,8 +157,10 @@
                 var t = $("#mytable").DataTable({
                     //'lengthMenu':[[5, 50 ],[5, 50]],
                     //dom:'Bflrti',
-                    //scrollY:'300px',
-                    scrollCollapse: true,
+                    scrollY:'400px',
+                    deferRender: true,
+                    scroller:{loadingIndicator:true},
+                    
                     //paging:false,
                     initComplete: function() {
                         var api = this.api();
