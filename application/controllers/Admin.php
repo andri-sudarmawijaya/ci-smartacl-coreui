@@ -40,7 +40,8 @@ class Admin extends CI_Controller
         //print_r($this->session->userdata('login_admin_5dc3d3da95837cb55414978798a86fbee74dd54d'));
         echo '<br><br>';
         //var_dump($this->smarty_acl->authorized());
-        $this->admin_views('index');
+        $data['title'] = 'Smarty CoreUI';
+        $this->admin_views('index', $data);
     }
 
     /******************************* ROLES ******************************/

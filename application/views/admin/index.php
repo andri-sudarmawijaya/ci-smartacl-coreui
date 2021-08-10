@@ -5,10 +5,15 @@
             <div class="col-6 offset-lg-3">
                 <div class="card">
                     <div class="card-header">
-                        Admin Home
+                        Admin Home <?php echo $title; ?>
                     </div>
                     <div class="card-body">
                         Content
+                        <?php
+                        echo '<pre>';
+                        print_r ($this->session->userdata());
+                        echo '</pre>';
+                        ?>
                     </div>
                 </div>
             </div>
