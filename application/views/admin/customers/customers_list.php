@@ -155,6 +155,11 @@
                 };
 
                 var t = $("#mytable").DataTable({
+                    //'lengthMenu':[[5, 50 ],[5, 50]],
+                    //dom:'Bflrti',
+                    //scrollY:'300px',
+                    scrollCollapse: true,
+                    //paging:false,
                     initComplete: function() {
                         var api = this.api();
                         $('#mytable_filter input')
