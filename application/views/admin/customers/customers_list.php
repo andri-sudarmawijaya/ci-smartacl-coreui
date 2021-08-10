@@ -8,15 +8,21 @@
 -->
 
 <html lang="en">
-<?php $this->load->view('_layouts/head'); ?>
-<link rel="stylesheet" type="text/css" href="/vendors/DataTables/datatables.min.css"/>
-<link rel="stylesheet" type="text/css" href="/vendors/DataTables/Select-1.3.3/css/select.bootstrap4.min.css"/>
-<link rel="stylesheet" type="text/css" href="/vendors/DataTables/Select-1.3.3/css/select.dataTables.min.css"/>
-
+    <head>
+    <?php $this->load->view('_layouts/head'); ?>
+    <link rel="stylesheet" type="text/css" href="/vendors/DataTables/datatables.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/vendors/DataTables/Select-1.3.3/css/select.bootstrap4.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/vendors/DataTables/Select-1.3.3/css/select.dataTables.min.css"/>
+    </head>
     <body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
-        <?php $this->load->view('_layouts/header'); ?>
+    <?php $this->load->view('_layouts/header'); ?>
+
         <div class="app-body" id="pjax-container">
+
+            <?php $this->load->view('_layouts/head'); ?>
+    
             <?php $this->load->view('_layouts/sidebar'); ?>
+    
             <main class="main" >
                 <!-- Breadcrumb-->
                 <ol class="breadcrumb">
@@ -38,10 +44,6 @@
                         </div>
                     </li>
                 </ol>
-                
-
-
-
                 <div class="container-fluid">
                     <div class="animated fadeIn">
                         <div class="row">
@@ -132,7 +134,7 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-sm-5">
-                                        <h4 class="card-title mb-0">Perusahaan</h4>
+                                        <h4 class="card-title mb-0"><?php echo $title; ?></h4>
                                         <div class="small text-muted">November 2017</div>
                                     </div>
                                     <!-- /.col-->
@@ -155,47 +157,56 @@
                                     <!-- /.col-->
                                 </div>
                                 <!-- /.row-->
-
-
-
-            <div class="col-md-4 text-right">
-                <?php echo anchor(site_url('customers/create'), 'Create', 'class="btn btn-primary"'); ?>
-		<?php echo anchor(site_url('customers/excel'), 'Excel', 'class="btn btn-primary"'); ?>
-		<?php echo anchor(site_url('customers/word'), 'Word', 'class="btn btn-primary"'); ?>
-	    </div>
-        </div>
-
-
+                                
                                 <div class="table-responsive">
 
-        <table class="table table-bordered table-striped" id="mytable">
-            <thead>
-                <tr>
-                    <th width="80px">No</th>
-		    <th>CustomerName</th>
-		    <th>ContactLastName</th>
-		    <th>ContactFirstName</th>
-		    <th>Phone</th>
-		    <th>AddressLine1</th>
-		    <th>AddressLine2</th>
-		    <th>City</th>
-		    <th>State</th>
-		    <th>PostalCode</th>
-		    <th>Country</th>
-		    <th>SalesRepEmployeeNumber</th>
-		    <th>CreditLimit</th>
-		    <th width="200px">Action</th>
-                </tr>
-            </thead>
-	    
-        </table>
-
+                                    <table class="table table-bordered table-striped" id="mytable">
+                                        <thead>
+                                            <tr>
+                                                <th width="80px">No</th>
+                                        <th>CustomerName</th>
+                                        <th>Phone</th>
+                                        <th>AddressLine1</th>
+                                        <th>City</th>
+                                        <th>State</th>
+                                        <th width="200px">Action</th>
+                                            </tr>
+                                        </thead>
+                                    
+                                    </table>
 
                                 </div>
-
                             </div>
                             <div class="card-footer">
                                 <div class="row text-center">
+                                    <div class="col-sm-12 col-md mb-sm-2 mb-0">
+                                        <div class="text-muted">Visits</div>
+                                        <strong>29.703 Users (40%)</strong>
+                                        <div class="progress progress-xs mt-2">
+                                            <div class="progress-bar bg-success" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md mb-sm-2 mb-0">
+                                        <div class="text-muted">Unique</div>
+                                        <strong>24.093 Users (20%)</strong>
+                                        <div class="progress progress-xs mt-2">
+                                            <div class="progress-bar bg-info" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md mb-sm-2 mb-0">
+                                        <div class="text-muted">Pageviews</div>
+                                        <strong>78.706 Views (60%)</strong>
+                                        <div class="progress progress-xs mt-2">
+                                            <div class="progress-bar bg-warning" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md mb-sm-2 mb-0">
+                                        <div class="text-muted">New Users</div>
+                                        <strong>22.123 Users (80%)</strong>
+                                        <div class="progress progress-xs mt-2">
+                                            <div class="progress-bar bg-danger" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </div>
                                     <div class="col-sm-12 col-md mb-sm-2 mb-0">
                                         <div class="text-muted">Bounce Rate</div>
                                         <strong>40.15%</strong>
@@ -207,18 +218,127 @@
                             </div>
                         </div>
                         <!-- /.card-->
-                        <!-- /.row-->
+                        <div class="row">
+                            <div class="col-sm-6 col-lg-3">
+                                <div class="brand-card">
+                                    <div class="brand-card-header bg-facebook">
+                                        <i class="fa fa-facebook"></i>
+                                        <div class="chart-wrapper">
+                                            <canvas id="social-box-chart-1" height="90"></canvas>
+                                        </div>
+                                    </div>
+                                    <div class="brand-card-body">
+                                        <div>
+                                            <div class="text-value">89k</div>
+                                            <div class="text-uppercase text-muted small">friends</div>
+                                        </div>
+                                        <div>
+                                            <div class="text-value">459</div>
+                                            <div class="text-uppercase text-muted small">feeds</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.col-->
+                            <div class="col-sm-6 col-lg-3">
+                                <div class="brand-card">
+                                    <div class="brand-card-header bg-twitter">
+                                        <i class="fa fa-twitter"></i>
+                                        <div class="chart-wrapper">
+                                            <canvas id="social-box-chart-2" height="90"></canvas>
+                                        </div>
+                                    </div>
+                                    <div class="brand-card-body">
+                                        <div>
+                                            <div class="text-value">973k</div>
+                                            <div class="text-uppercase text-muted small">followers</div>
+                                        </div>
+                                        <div>
+                                            <div class="text-value">1.792</div>
+                                            <div class="text-uppercase text-muted small">tweets</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.col-->
+                            <div class="col-sm-6 col-lg-3">
+                                <div class="brand-card">
+                                    <div class="brand-card-header bg-linkedin">
+                                        <i class="fa fa-linkedin"></i>
+                                        <div class="chart-wrapper">
+                                            <canvas id="social-box-chart-3" height="90"></canvas>
+                                        </div>
+                                    </div>
+                                    <div class="brand-card-body">
+                                        <div>
+                                            <div class="text-value">500+</div>
+                                            <div class="text-uppercase text-muted small">contacts</div>
+                                        </div>
+                                        <div>
+                                            <div class="text-value">292</div>
+                                            <div class="text-uppercase text-muted small">feeds</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.col-->
+                            <div class="col-sm-6 col-lg-3">
+                                <div class="brand-card">
+                                    <div class="brand-card-header bg-google-plus">
+                                        <i class="fa fa-google-plus"></i>
+                                        <div class="chart-wrapper">
+                                            <canvas id="social-box-chart-4" height="90"></canvas>
+                                        </div>
+                                    </div>
+                                    <div class="brand-card-body">
+                                        <div>
+                                            <div class="text-value">894</div>
+                                            <div class="text-uppercase text-muted small">followers</div>
+                                        </div>
+                                        <div>
+                                            <div class="text-value">92</div>
+                                            <div class="text-uppercase text-muted small">circles</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.col-->
+                        </div>
+                        
                     </div>
                 </div>
             </main>
+            
             <?php $this->load->view('_layouts/aside'); ?>
         </div>
-        <?php $this->load->view('_layouts/footer'); ?>
-        <?php $this->load->view('_layouts/script'); ?>
+        <footer class="app-footer">
+            <div>
+                <a href="https://coreui.io">CoreUI</a>
+                <span>&copy; 2018 creativeLabs.</span>
+            </div>
+            <div class="ml-auto">
+                <span>Powered by</span>
+                <a href="https://coreui.io">CoreUI</a>
+            </div>
+        </footer>
+        <!-- CoreUI and necessary plugins-->
+        <script src="<?php echo base_url('node_modules/jquery/dist/jquery.min.js'); ?>"></script>
+        <script src="<?php echo base_url('node_modules/popper.js/dist/umd/popper.min.js'); ?>"></script>
+        <script src="<?php echo base_url('node_modules/bootstrap/dist/js/bootstrap.min.js'); ?>"></script>
+        <script src="<?php echo base_url('node_modules/pace-progress/pace.min.js'); ?>"></script>
+        <script src="<?php echo base_url('node_modules/perfect-scrollbar/dist/perfect-scrollbar.min.js'); ?>"></script>
+        <script src="<?php echo base_url('node_modules/@coreui/coreui/dist/js/coreui.min.js'); ?>"></script>
+        <!-- Plugins and scripts required by this view-->
+        <script src="<?php echo base_url('node_modules/chart.js/dist/Chart.min.js'); ?>"></script>
+        <script src="<?php echo base_url('node_modules/@coreui/coreui-plugin-chartjs-custom-tooltips/dist/js/custom-tooltips.min.js'); ?>"></script>
+        <script src="<?php echo base_url('assets/js/main.js'); ?>"></script>
         <script type="text/javascript" src="/vendors/DataTables/datatables.min.js"></script>
         
+        <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.pjax.js'); ?>"></script>
 
 
+        <script type="text/javascript" src="/vendors/DataTables/datatables.min.js"></script>
+        
         <script type="text/javascript">
             $(document).ready(function() {
                 $.fn.dataTableExt.oApi.fnPagingInfo = function(oSettings)
@@ -255,7 +375,7 @@
                         {
                             "data": "customerNumber",
                             "orderable": false
-                        },{"data": "customerName"},{"data": "contactLastName"},{"data": "contactFirstName"},{"data": "phone"},{"data": "addressLine1"},{"data": "addressLine2"},{"data": "city"},{"data": "state"},{"data": "postalCode"},{"data": "country"},{"data": "salesRepEmployeeNumber"},{"data": "creditLimit"},
+                        },{"data": "customerName"},{"data": "phone"},{"data": "addressLine1"},{"data": "city"},{"data": "state"},
                         {
                             "data" : "action",
                             "orderable": false,
@@ -284,11 +404,5 @@
                 }
             });
         </script>
-
-
-                
     </body>
 </html>
-
-
-

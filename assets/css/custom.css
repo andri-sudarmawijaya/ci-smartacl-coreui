@@ -1,0 +1,35 @@
+
+
+/* badge-dark */
+.badge-Batal {
+    color: #fff;
+    background-color: #636f83;
+    border-color: #636f83;
+}
+
+/* badge-success */
+.badge-Selesai {
+    color: #fff;
+    background-color: #2eb85c;
+}
+/* badge-warning */
+.badge-Penagihan {
+    color: #fff;
+    background-color: #39f;
+}
+/* badge-warning */
+.badge-Proses {
+    color: #4f5d73;
+    background-color: #f9b115;
+}
+/* badge-secondary */
+.badge-Diterima {
+    color: #4f5d73;
+    background-color: #ced2d8;
+    border-color: #ced2d8;
+}
+/* badge-danger */
+.badge-null {
+    color: #fff0;
+    background-color: #fff0;
+}
