@@ -264,7 +264,13 @@ class Admin extends CI_Controller
     {
         $URI = 'admin/admins';
         $data = ['URI' => $URI, 'items' => $this->smarty_acl->admins()];
+        $data['title'] = 'Admins';
         $this->admin_views('admins', $data);
+    }
+
+    public function json() {
+        header('Content-Type: application/json');
+        echo $this->Customers_model->json();
     }
 
     /*
@@ -304,6 +310,7 @@ class Admin extends CI_Controller
             'form_action' => base_url('admin/admins/create'),
             'roles' => $this->smarty_acl->roles()
         ];
+        $data['title'] = 'Admins';
         $this->admin_views('admins_form', $data);
     }
 
@@ -354,6 +361,7 @@ class Admin extends CI_Controller
             'item' => (object)$item,
             'roles' => $this->smarty_acl->roles()
         ];
+        $data['title'] = 'Admins';
         $this->admin_views('admins_form', $data);
     }
 

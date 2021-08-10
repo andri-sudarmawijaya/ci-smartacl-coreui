@@ -57,7 +57,8 @@ class Customers extends CI_Controller
 		'salesRepEmployeeNumber' => $row->salesRepEmployeeNumber,
 		'creditLimit' => $row->creditLimit,
 	    );
-            $this->load->view('customers/customers_read', $data);
+        $data['title'] = $row->customerName;
+            $this->load->view('admin/customers/customers_read', $data);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
             redirect(site_url('customers'));
