@@ -198,15 +198,15 @@ class Customers extends CI_Controller
         $isiData = $this->input->post('isi');
         
         $result = 0;
-        $namaCustomer = NULL;
+        $namaCustomer = '';
         foreach($isiData as $row){
             $update = $this->Customers_model->update_status($row['customerNumber'], $status);
             if($update){
                 $result++;
-                $namaCustomer .= str_pad($result,2,"0",STR_PAD_LEFT) .". ". $row['customerName'].", \r\n";
+                $namaCustomer .=   "\r\n" . str_pad($result,2,"0",STR_PAD_LEFT) .". ". $row['customerName'].",";
             }
         }
-        $isi = "[" . date('l, jS \of F Y - H:i:s') . "]  \r\n" .$this->smarty_acl->get_admin()['name'] . " mengubah status " . $result ." customer : \r\n " . $namaCustomer . " menjadi " . $status;
+        $isi = "[" . date('l, jS \of F Y - H:i:s') . "]  \r\n" .$this->smarty_acl->get_admin()['name'] . " mengubah status " . $result ." customer : \r\n " . $namaCustomer . "\r\n \r\n menjadi " . $status;
         insert_history('customer',$isi);
         
         $data['message'] = $isi;
