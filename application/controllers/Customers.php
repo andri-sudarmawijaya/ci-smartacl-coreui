@@ -1,5 +1,4 @@
 <?php
-
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
@@ -18,7 +17,6 @@ class Customers extends CI_Controller
 	    $this->load->library('datatables');
         $this->logged_in();
         $this->smarty_acl->authorized();
-
     }
 
     protected function logged_in()
@@ -207,7 +205,6 @@ class Customers extends CI_Controller
                 $result++;
                 $namaCustomer .= str_pad($result,2,"0",STR_PAD_LEFT) .". ". $row['customerName'].", \r\n";
             }
-            
         }
         $isi = "[" . date('l, jS \of F Y - H:i:s') . "]  \r\n" .$this->smarty_acl->get_admin()['name'] . " mengubah status " . $result ." customer : \r\n " . $namaCustomer . " menjadi " . $status;
         insert_history('customer',$isi);
