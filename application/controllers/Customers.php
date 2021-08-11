@@ -200,17 +200,21 @@ class Customers extends CI_Controller
         $isiData = $this->input->post('isi');
         
         $result = 0;
-        $namaCustomer='';
+        $namaCustomer = NULL;
         foreach($isiData as $row){
             $update = $this->Customers_model->update_status($row['customerNumber'], $status);
             if($update){
                 $result++;
-                $namaCustomer.=$row['customerName'].',';
+                $namaCustomer .= str_pad($result,2,"0",STR_PAD_LEFT) .". ". $row['customerName'].", \r\n";
             }
             
         }
-        $isi = ' mengubah status customer  ' . $namaCustomer . ' menjadi ' . $status;
+        $isi = "[" . date('l, jS \of F Y - H:i:s') . "]  \r\n" .$this->smarty_acl->get_admin()['name'] . " mengubah status " . $result ." customer : \r\n " . $namaCustomer . " menjadi " . $status;
         insert_history('customer',$isi);
+        
+        $data['message'] = $isi;
+        telegram_message($data);
+        
         echo $result;
         
     }
