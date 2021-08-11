@@ -1,3 +1,11 @@
+<?php
+$_SESSION['token']['key'] = bin2hex(random_bytes(32));
+$_SESSION['token']['value'] = time() . bin2hex(random_bytes(32));
+
+$token_key = $_SESSION['token']['key'];
+$token_val = $_SESSION['token']['value'];
+?>
+
 <html lang="en">
   <head>
     <base href="./">
@@ -9,9 +17,9 @@
     <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
     <title>CoreUI Free Bootstrap Admin Template</title>
     <!-- Icons-->
-    <link href="http://ci-smartyacl-coreui.local/node_modules/@coreui/icons/css/coreui-icons.min.css" rel="stylesheet">
+    <link href="<?php echo base_url('node_modules/@coreui/icons/css/coreui-icons.min.css');?>" rel="stylesheet">
     <!-- Main styles for this application-->
-    <link href="http://ci-smartyacl-coreui.local/assets/css/style.css" rel="stylesheet">
+    <link href="<?php echo base_url('assets/css/style.css');?>" rel="stylesheet">
   </head>
   <body>
     <noscript>
@@ -59,6 +67,8 @@
                     </div>
                     <div class="row">
                       <div class="text-left col-4">
+                        <input type="hidden" name="token_key" value="<?php echo $token_key; ?>">
+                        <input type="hidden" name="token_val" value="<?php echo $token_val; ?>">
                         <button type="submit" class="btn px-4 btn-primary">Login</button>
                       </div>
                       <div class="text-right col-8">
@@ -86,9 +96,8 @@
       </div>
     </div>
     <!-- CoreUI and necessary plugins-->
-    <script src="http://ci-smartyacl-coreui.local/node_modules/jquery/dist/jquery.min.js"></script>
-    <script src="http://ci-smartyacl-coreui.local/node_modules/popper.js/dist/umd/popper.min.js"></script>
-    <script src="http://ci-smartyacl-coreui.local/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="http://ci-smartyacl-coreui.local/node_modules/@coreui/coreui/dist/js/coreui.min.js"></script>
+    <script src="<?php echo base_url('node_modules/jquery/dist/jquery.min.js');?>"></script>
+    <script src="<?php echo base_url('node_modules/bootstrap/dist/js/bootstrap.min.js');?>"></script>
+    <script src="<?php echo base_url('node_modules/@coreui/coreui/dist/js/coreui.min.js');?>"></script>
   </body>
 </html>

@@ -19,6 +19,10 @@ class Auth extends CI_Controller {
         if($this->smarty_acl->logged_in(FALSE)){
             return redirect('/account');
         }
+
+        $token_key = $this->input->post('token_key');
+        $token_val = $this->input->post('token_val');
+
 	    //Rules
         $this->form_validation->set_rules('username', 'Username', 'trim|required|alpha_dash');
         $this->form_validation->set_rules('password', 'Password', 'trim|required');
@@ -26,8 +30,9 @@ class Auth extends CI_Controller {
         //Validate
         if ($this->form_validation->run() === TRUE) {
             //Login user
-            $username = filter_var($this->input->post('username',true), FILTER_SANITIZE_STRING);
-            $password = filter_var($this->input->post('password',true), FILTER_SANITIZE_STRING);
+
+            $username = $this->security->xss_clean($this->input->post('username',true);
+            $password = $this->security->xss_clean($this->input->post('password',true);
             $login = $this->smarty_acl->login(
                 $username,
                 $password,
