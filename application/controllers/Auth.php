@@ -26,9 +26,11 @@ class Auth extends CI_Controller {
         //Validate
         if ($this->form_validation->run() === TRUE) {
             //Login user
+            $username = filter_var($this->input->post('username',true), FILTER_SANITIZE_STRING);
+            $password = filter_var($this->input->post('password',true), FILTER_SANITIZE_STRING);
             $login = $this->smarty_acl->login(
-                $this->input->post('username',true),
-                $this->input->post('password',true),
+                $username,
+                $password,
                 $this->input->post('remember',true),
                 FALSE
             );
