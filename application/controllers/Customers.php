@@ -13,6 +13,7 @@ class Customers extends CI_Controller
         $this->load->helper('form');
         $this->load->library('form_validation');
         $this->load->model('Customers_model');
+        $this->load->model('History_model');
 
 	    $this->load->library('datatables');
         $this->logged_in();
@@ -196,22 +197,24 @@ class Customers extends CI_Controller
     {
         $jumlah_data = $this->input->post('jumUpdateStatus');
         $status = $this->input->post('status');
-
-        $id_data = $this->input->post('id');
-        //echo $jumlah_data;
-        $records = explode(',',$id_data); 
+        $isiData = $this->input->post('isi');
+        
         $result = 0;
-        foreach( $records as $row){
-           $update = $this->Customers_model->update_status($row, $status);
-           if($update){
+        $namaCustomer='';
+        foreach($isiData as $row){
+            $update = $this->Customers_model->update_status($row['customerNumber'], $status);
+            if($update){
                 $result++;
+                $namaCustomer.=$row['customerName'].',';
             }
             
         }
+        $isi = ' mengubah status customer  ' . $namaCustomer . ' menjadi ' . $status;
+        insert_history('customer',$isi);
         echo $result;
         
-
     }
+
 
     public function _rules() 
     {

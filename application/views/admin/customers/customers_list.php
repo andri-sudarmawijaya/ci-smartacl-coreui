@@ -71,7 +71,7 @@
                                         </thead>
                                     
                                     </table>
-                                    <input type='hidden' id='hasilSelect' class='form-control'>
+
                                     <div id='updateStatus'>
                                         <label for='selectStatus' class='form-label'> Pilih Status</label>
                                         <select id='selectStatus' class='form-control'>
@@ -155,11 +155,11 @@
                 };
 
                 var t = $("#mytable").DataTable({
-                    //'lengthMenu':[[5, 50 ],[5, 50]],
-                    //dom:'Bflrti',
-                    scrollY:'400px',
-                    deferRender: true,
-                    scroller:{loadingIndicator:true},
+                    'lengthMenu':[[5, 10, 25, 50, 100, -1 ],[5, 10, 25, 50, 100, 'semua']],
+                    dom:'Bflrtip',
+                    //scrollY:'400px',
+                    //deferRender: true,
+                    //scroller:{loadingIndicator:true},
                     
                     //paging:false,
                     initComplete: function() {
@@ -226,6 +226,7 @@
                 
             $('#updateStatus').hide()
             var jum_data = '';
+            var isiSelect;
             function getDataSelected(){
 
                 $('#updateStatus').hide()
@@ -234,31 +235,38 @@
                 array.push(t.row(rowIdx).data())
                 })
 
-                var dk = [];        
+                var dk = [];
                 array.forEach(function(entry) {
-                    dk.push(entry.customerNumber);            
+                    var isi = {};
+                    isi.customerNumber = entry.customerNumber;  
+                    isi.customerName = entry.customerName;  
+                    dk.push(entry);
                 })
-                
-                $('#hasilSelect').val(dk)
-                
+                                
                 jum_data = t.rows({selected:true}).count()
                 if(jum_data >= 1){
                     $('#updateStatus').show()
+                    isiSelect = dk;
                 }
-                //console.log(array)
+                else{
+                    isiSelect = '';
+                }
             }
 
             $('#selectStatus').on('change', function(){
+                //console.log(isiSelect)
                 if($(this).val() !== ''){
                     if(jum_data >= 1){
                         $.ajax({
                             type:'POST',
                             url: '<?=base_url("customers/updateStatus");?>',
                             dataType : 'JSON',
-                            data : {id:$('#hasilSelect').val(), jumUpdateStatus : jum_data, status:$(this).val()}, 
+                            data : {jumUpdateStatus : jum_data, status:$(this).val(),isi:isiSelect}, 
                             success : function(response){
                                 console.log(response)
                                 t.ajax.reload()
+                            },error:function(errors){
+                                console.log(errors.responseText)
                             }
                         })
                     }
