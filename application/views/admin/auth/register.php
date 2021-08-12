@@ -96,13 +96,11 @@ $token_val = $_SESSION['token']['value'];
             </div>
             <div class="card d-md-down-none">
               <div class="card-body">
-                <div class="card-body">
-                  <h2>Log in</h2>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                  <p>Sudah memiliki akun ?&nbsp; <br />
-                    <a class="btn btn-outline-dark btn-lg" href="<?php echo base_url('admin/login'); ?>"> Log in</a>
-                  </p>
-                </div>
+                <h2>Log in</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <p>Sudah memiliki akun ?&nbsp; <br />
+                  <a class="btn btn-outline-dark btn-lg" href="<?php echo base_url('admin/login'); ?>"> Log in</a>
+                </p>
               </div>
             </div>
           </div>
