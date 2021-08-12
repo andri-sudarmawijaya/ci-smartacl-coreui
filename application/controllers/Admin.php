@@ -126,6 +126,8 @@ class Admin extends CI_Controller
             'modules' => $this->smarty_acl->modules(),
             'module_permissions' => $this->smarty_acl->module_permissions($role_id),
         ];
+
+        $data['title'] = $item->name ?? 'TIDAK ADA DATA';
         $this->admin_views('roles_form', $data);
     }
 
