@@ -27,17 +27,14 @@
 
                     <div class="card">        
                             <div class="card-header">
-                                <h5>Admin <?php echo isset($item) ? 'Edit' : 'Create' ;?></h5>
+                                <div class="d-flex justify-content-between bd-highlight">
+                                    <div class="p-2 bd-highlight">
+                                        <h4 class="card-title mb-0"><?php echo $title; ?></h4>
+                                    </div>
+                                    <div class="p-2 bd-highlight"><h5><?php echo isset($item) ? 'Edit' : 'Create' ;?> Admins</h5></div>
+                                </div>
                             </div>
                             <div class="card-body">
-                                <div class="row">
-                                    <div class="col-sm-5">
-                                        <h4 class="card-title mb-0"><?php echo $title; ?></h4>
-                                        <div class="small text-muted">November 2017</div>
-                                    </div>
-                                </div>
-                                <!-- /.row-->
-                                
                                 <form action="<?php echo $form_action ;?>" method="post">
 
                                     <form class="">
@@ -104,12 +101,20 @@
                                                 <small class="form-text text-muted w-100">Please Select a status.</small>
                                             </div>
                                         </div>
-                                    <button type="submit" class="btn btn-primary"><?php echo isset($item) ? 'Update' : 'Create' ;?></button>
-                                </form>
                                 
                             </div>
                             <div class="card-footer">
                                 
+                              <div class="d-flex justify-content-between bd-highlight">
+                                    <div class="p-2 bd-highlight">
+                                            <button type="submit" class="btn btn-primary"><?php echo isset($item) ? 'Update' : 'Create' ;?></button>
+                                        </form>
+                                    </div>
+                                    <div class="p-2 bd-highlight"><h5>
+                                        <a href="<?php echo site_url('admin/admins') ?>" class="btn btn-default">Batal</a>
+                                    </h5></div>
+                                </div>
+
                             </div>
                         </div>                        
                     </div>

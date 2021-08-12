@@ -361,7 +361,7 @@ class Admin extends CI_Controller
             'item' => (object)$item,
             'roles' => $this->smarty_acl->roles()
         ];
-        $data['title'] = 'Admins';
+        $data['title'] = $item['username'] ?? 'TIDAK ADA DATA';
         $this->admin_views('admins_form', $data);
     }
 

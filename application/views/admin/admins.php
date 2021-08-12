@@ -27,7 +27,10 @@
 
                     <div class="card">        
                             <div class="card-header">
-                                <a href="<?php echo base_url($URI.'/create'); ?>" class="btn btn-success btn-sm"> Create</a>
+                                <div class="d-flex justify-content-between bd-highlight">
+                                    <div class="p-2 bd-highlight"><a href="<?php echo base_url($URI.'/create'); ?>" class="btn btn-success btn-sm"> Create</a></div>
+                                    <div class="p-2 bd-highlight"> <h5>Manage Admin</h5></div>
+                                </div>
                             </div>
                             <div class="card-body">
                                 <div class="row">
