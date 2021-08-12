@@ -30,9 +30,8 @@ class Auth extends CI_Controller {
         //Validate
         if ($this->form_validation->run() === TRUE) {
             //Login user
-
-            $username = $this->security->xss_clean($this->input->post('username',true);
-            $password = $this->security->xss_clean($this->input->post('password',true);
+            $username = $this->security->xss_clean($this->input->post('username',true));
+            $password = $this->security->xss_clean($this->input->post('password',true));
             $login = $this->smarty_acl->login(
                 $username,
                 $password,
