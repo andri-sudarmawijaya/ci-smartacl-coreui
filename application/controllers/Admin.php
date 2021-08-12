@@ -52,6 +52,7 @@ class Admin extends CI_Controller
     {
         $URI = 'admin/roles';
         $data = ['URI' => $URI, 'items' => $this->smarty_acl->roles()];
+        $data['title'] = 'Daftar Roles';
         $this->admin_views('roles', $data);
     }
 
@@ -85,6 +86,7 @@ class Admin extends CI_Controller
             'form_action' => base_url('admin/roles/create'),
             'modules' => $this->smarty_acl->modules(),
         ];
+        $data['title'] = $item->name ?? 'Buat role baru';
         $this->admin_views('roles_form', $data);
     }
 

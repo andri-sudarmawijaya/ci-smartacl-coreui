@@ -16,9 +16,9 @@
     <?php $this->load->view('_layouts/header'); ?>
 
         <div class="app-body" id="pjax-container">
-    
+
         <?php $this->load->view('_layouts/sidebar'); ?>
-    
+
             <main class="main" >
                 <?php $this->load->view('_layouts/breadcrumb'); ?>
                 <div class="container-fluid">
@@ -61,7 +61,7 @@
                                     </div>
                                     <div class="d-flex justify-content-center bd-highlight">
 
-                                        <div class="row">    
+                                        <div class="row">
                                             <div class="col-md-12">
                                                 <h4>Permissions </h4>
 
@@ -75,7 +75,7 @@
 
                                     <div class="d-flex justify-content-center bd-highlight">
                                         <div class="container fluid">
-                                            <div class="row">    
+                                            <div class="row">
                                                 <div class="col-md-12">
                                                 <?php foreach ($modules as $module): $m_permissions = json_decode($module->permissions); ?>
                                                     <dl class="row">
@@ -98,7 +98,7 @@
                                                 <?php endforeach; ?>
                                                 </div>
                                             </div>
-                                        </div>    
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="card-footer">
@@ -113,14 +113,14 @@
                                 </div>
                             </form>
                         </div>
-                        
+
                     </div>
                 </div>
             </main>
-            
+
             <?php $this->load->view('_layouts/aside'); ?>
         </div>
-        <?php $this->load->view('_layouts/footer'); ?>        
+        <?php $this->load->view('_layouts/footer'); ?>
         <?php $this->load->view('_layouts/script'); ?>
 
         <script>
@@ -145,4 +145,3 @@
         </script>
     </body>
 </html>
-
