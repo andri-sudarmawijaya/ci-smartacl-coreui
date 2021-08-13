@@ -38,7 +38,7 @@ class Welcome extends CI_Controller {
 	}
 
 	public function account()
-	{   $data['title'] = 'Account  X Welcome to CodeIgniter !';
+	{   $data['title'] = 'Account USER Welcome to CodeIgniter !';
 		$this->load->view('account', $data);
 	}
 }
