@@ -407,6 +407,7 @@ class Admin extends CI_Controller
     {
         $URI = 'admin/users';
         $data = ['URI' => $URI, 'items' => $this->smarty_acl->users()];
+        $data['title'] = 'Daftar Users';
         $this->admin_views('users', $data);
     }
 
@@ -446,6 +447,7 @@ class Admin extends CI_Controller
         $data = [
             'form_action' => base_url('admin/users/create')
         ];
+        $data['title'] = 'Tambah User';
         $this->admin_views('users_form', $data);
     }
 
@@ -493,6 +495,7 @@ class Admin extends CI_Controller
             'form_action' => base_url("admin/users/edit/$user_id"),
             'item' => (object)$item,
         ];
+        $data['title'] = $item['name'];
         $this->admin_views('users_form', $data);
     }
 
