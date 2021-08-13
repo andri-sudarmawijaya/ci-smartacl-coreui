@@ -32,7 +32,7 @@ $token_val = $_SESSION['token']['value'];
     <div class="container h-100">
       <div class="row h-100 justify-content-center align-items-center">
         <div class="col-md-8">
-          <?php $this->load->view('_layout/alerts');?>
+          <?php $this->load->view('_layouts/alerts');?>
           <div class="card-group">
             <div class="card p-4 bg-primary text-white">
               <div class="card-body">

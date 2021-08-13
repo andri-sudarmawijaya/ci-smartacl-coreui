@@ -31,8 +31,9 @@ $token_val = $_SESSION['token']['value'];
   <div class="c-app flex-row align-items-center">
     <div class="container h-100">
       <div class="row h-100 justify-content-center align-items-center">
-        <?php $this->load->view('_layouts/alerts');?>
+        <?php $this->load->view('_layouts/alerts'); ?>
         <div class="col-md-8">
+          <?php $this->load->view('_layouts/alerts'); ?>
           <div class="card-group">
             <div class="card text-center p-4">
               <div class="card-body">
