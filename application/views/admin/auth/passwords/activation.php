@@ -32,6 +32,7 @@ $token_val = $_SESSION['token']['value'];
     <div class="container h-100">
       <div class="row h-100 justify-content-center align-items-center">
         <div class="col-md-6 col-sm-12">
+          <?php $this->load->view('_layouts/alerts'); ?>
           <div class="card">
             <div class="card-header">
               <h5>Admin Request New Activation Link</h5>

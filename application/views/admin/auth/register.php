@@ -31,6 +31,7 @@ $token_val = $_SESSION['token']['value'];
   <div class="c-app flex-row align-items-center">
     <div class="container h-100">
       <div class="row h-100 justify-content-center align-items-center">
+        <?php $this->load->view('_layouts/alerts'); ?>
         <div class="col-md-8">
           <div class="card-group">
             <div class="card text-center p-4">
@@ -85,14 +86,14 @@ $token_val = $_SESSION['token']['value'];
                   <div class="d-flex justify-content-around bd-highlight mb-3">
                     <div class="row">
 
-                    <div class="col-sm-12 col-md-6 p-2 bd-highlight">
-                      <button type="submit" class="btn px-4 btn-primary btn-block"><span><i class="fa fa-user-plus" aria-hidden="true"></i></span> Sign up</button>
-                    </div>
-                    <div class="col-sm-12 col-md-6 p-2 bd-highlight">
-                      <a  href="<?php echo base_url('admin/forgot_password'); ?>">Forgot your password?</a>
-                      <a class="d-lg-none btn btn-outline-dark" href="<?php echo base_url('admin/login'); ?>"><span><i class="fa fa-sign-in" aria-hidden="true"></i></span> Log in!</a>
+                      <div class="col-sm-12 col-md-6 p-2 bd-highlight">
+                        <button type="submit" class="btn px-4 btn-primary btn-block"><span><i class="fa fa-user-plus" aria-hidden="true"></i></span> Sign up</button>
+                      </div>
+                      <div class="col-sm-12 col-md-6 p-2 bd-highlight">
+                        <a href="<?php echo base_url('admin/forgot_password'); ?>">Forgot your password?</a>
+                        <a class="d-lg-none btn btn-outline-dark" href="<?php echo base_url('admin/login'); ?>"><span><i class="fa fa-sign-in" aria-hidden="true"></i></span> Log in!</a>
 
-                    </div>
+                      </div>
 
                     </div>
                   </div>
