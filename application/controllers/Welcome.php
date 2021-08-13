@@ -18,8 +18,27 @@ class Welcome extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
+
+    function __construct()
+    {
+        parent::__construct();
+        $this->load->library('smarty_acl');
+        $this->load->helper('url');
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+
+	    $this->load->library('datatables');
+        //$this->logged_in();
+        //$this->smarty_acl->authorized();
+    }
+
 	public function index()
 	{   $data['title'] = 'Welcome to CodeIgniter !';
 		$this->load->view('welcome_message', $data);
+	}
+
+	public function account()
+	{   $data['title'] = 'Account  X Welcome to CodeIgniter !';
+		$this->load->view('account', $data);
 	}
 }

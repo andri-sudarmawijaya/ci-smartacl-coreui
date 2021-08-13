@@ -5,7 +5,7 @@
             <div class="col-6 offset-lg-3">
                 <div class="card">
                     <div class="card-header">
-                        Account
+                        Admin Home <?php echo $title; ?>
                     </div>
                     <div class="card-body">
                         Content
@@ -14,7 +14,7 @@
                         print_r ($this->session->userdata());
 
 
-                        //print_r ($this->smarty_acl->get_admin()['id']);
+                        print_r ($this->smarty_acl->get_admin()['id']);
                         echo '</pre>';
                         ?>
                     </div>
@@ -23,4 +23,4 @@
         </div>
     </div>
 
-<?php $this->load->view('footer'); ?>
+<?php $this->load->view('account'); ?>
