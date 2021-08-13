@@ -22,7 +22,7 @@ class Admin extends CI_Controller
      */
     protected function admin_views($view, $data = null)
     {
-        $this->load->view('admin/'.$view, $data);
+        $this->load->view('admin/' . $view, $data);
     }
 
     protected function logged_in()
@@ -165,6 +165,8 @@ class Admin extends CI_Controller
     {
         $URI = 'admin/modules';
         $data = ['URI' => $URI, 'items' => $this->smarty_acl->modules()];
+
+        $data['title'] = 'Daftar Modules';
         $this->admin_views('modules', $data);
     }
 
@@ -233,6 +235,7 @@ class Admin extends CI_Controller
             return redirect(current_url());
         }
         $data = ['form_action' => base_url("admin/modules/edit/$module_id"), 'item' => $item];
+        $data['title'] = $item->name ?? 'TIDAK ADA DATA';
         $this->admin_views('modules_form', $data);
     }
 
@@ -272,7 +275,8 @@ class Admin extends CI_Controller
         $this->admin_views('admins', $data);
     }
 
-    public function json() {
+    public function json()
+    {
         header('Content-Type: application/json');
         echo $this->Customers_model->json();
     }
@@ -294,14 +298,16 @@ class Admin extends CI_Controller
         //Validate
         if ($this->form_validation->run() === TRUE) {
             //Create admin
-            $admin = $this->smarty_acl->register($this->input->post('username', true),
+            $admin = $this->smarty_acl->register(
+                $this->input->post('username', true),
                 $this->input->post('password', true),
                 $this->input->post('email', true),
                 [
                     'name' => $this->input->post('name', true),
                     'status' => $this->input->post('status', true),
                 ],
-                $this->input->post('role_id', true));
+                $this->input->post('role_id', true)
+            );
             //Created
             if ($admin) {
                 $this->session->set_flashdata('success_msg', 'Admin created successfully!');
@@ -427,7 +433,8 @@ class Admin extends CI_Controller
                 [
                     'name' => $this->input->post('name', true),
                     'status' => $this->input->post('status', true),
-                ]);
+                ]
+            );
             //Created
             if ($user) {
                 $this->session->set_flashdata('success_msg', 'User created successfully!');
@@ -473,7 +480,7 @@ class Admin extends CI_Controller
                 $data['password'] = $this->input->post('password', true);
             }
             //Update user
-            $user_update = $this->smarty_acl->update_user($data, $item['id'],FALSE);
+            $user_update = $this->smarty_acl->update_user($data, $item['id'], FALSE);
             //Updated
             if ($user_update) {
                 $this->session->set_flashdata('success_msg', 'Admin updated successfully!');
@@ -503,7 +510,7 @@ class Admin extends CI_Controller
             return redirect('admin/users');
         }
         //Delete user
-        $user_delete = $this->smarty_acl->delete_user($item['id'],FALSE);
+        $user_delete = $this->smarty_acl->delete_user($item['id'], FALSE);
         //Deleted
         if ($user_delete) {
             $this->session->set_flashdata('success_msg', 'Admin deleted successfully!');
