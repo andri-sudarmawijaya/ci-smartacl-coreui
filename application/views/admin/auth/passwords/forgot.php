@@ -19,6 +19,7 @@ $token_val = $_SESSION['token']['value'];
   <title>CoreUI Free Bootstrap Admin Template</title>
   <!-- Icons-->
   <link href="<?php echo base_url('node_modules/@coreui/icons/css/coreui-icons.min.css'); ?>" rel="stylesheet">
+  <link href="<?php echo base_url('node_modules/font-awesome/css/font-awesome.min.css'); ?>" rel="stylesheet">
   <!-- Main styles for this application-->
   <link href="<?php echo base_url('assets/css/style.css'); ?>" rel="stylesheet">
 </head>
@@ -30,25 +31,27 @@ $token_val = $_SESSION['token']['value'];
   <div class="c-app flex-row align-items-center">
     <div class="container h-100">
       <div class="row h-100 justify-content-center align-items-center">
-        <div class="col-6">
+        <div class="col-md-6 col-sm-12">
           <div class="card">
-            <form action="<?php echo base_url('admin/forgot_password'); ?>" method="post">
-              <div class="card-header">
-                <h5>Admin Password Recovery</h5>
-              </div>
-              <div class="card-body">
+            <div class="card-header">
+              <h5>Admin Password Recovery</h5>
+            </div>
+            <div class="card-body">
+              <form action="<?php echo base_url('admin/forgot_password'); ?>" method="post">
                 <div class="form-group">
                   <label>Email</label>
                   <input type="email" name="email" value="<?php echo set_value('email'); ?>" placeholder="Email" class="form-control" />
                   <input type="hidden" name="token_key" value="<?php echo $token_key; ?>">
                   <input type="hidden" name="token_val" value="<?php echo $token_val; ?>">
                 </div>
-              </div>
-              <div class="card-footer">
-                <button type="submit" class="btn btn-primary">Send Password Reset Link</button>
-                <a class="btn btn-outline-dark" href="<?php echo base_url('admin/login'); ?>"> Log in</a>
-              </div>
-            </form>
+                <div class="row">
+                  <div class="col-12">
+                    <button type="submit" class="btn btn-primary"><span><i class="fa fa-user-secret" aria-hidden="true"></i></span> Send Password Reset Link</button>
+                    <a class="btn btn-outline-dark" href="<?php echo base_url('admin/login'); ?>"><span><i class="fa fa-sign-in" aria-hidden="true"></i></span> Log in</a>
+                  </div>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>

@@ -33,7 +33,7 @@ $token_val = $_SESSION['token']['value'];
       <div class="row h-100 justify-content-center align-items-center">
         <div class="col-md-8">
           <div class="card-group">
-            <div class="card text-center p-4 bg-primary text-white">
+            <div class="card text-center p-4">
               <div class="card-body">
                 <form action="<?php echo base_url('admin/register'); ?>" method="post">
                   <h1>Buat Akun</h1>
@@ -83,23 +83,28 @@ $token_val = $_SESSION['token']['value'];
                     <input type="hidden" name="token_val" value="<?php echo $token_val; ?>">
                   </div>
                   <div class="d-flex justify-content-around bd-highlight mb-3">
-                    <div class="p-2 bd-highlight">
-                      <button type="submit" class="btn px-4 btn-primary">Daftar</button>
+                    <div class="row">
+
+                    <div class="col-sm-12 col-md-6 p-2 bd-highlight">
+                      <button type="submit" class="btn px-4 btn-primary btn-block"><span><i class="fa fa-user-plus" aria-hidden="true"></i></span> Sign up</button>
                     </div>
-                    <div class="p-2 bd-highlight">
-                      <a class="text-white" href="<?php echo base_url('admin/forgot_password'); ?>">Forgot your password?</a>
-                      <a class="text-white btn d-lg-none bg-light btn-link" href="<?php echo base_url('admin/login'); ?>">Log in!</a>
+                    <div class="col-sm-12 col-md-6 p-2 bd-highlight">
+                      <a  href="<?php echo base_url('admin/forgot_password'); ?>">Forgot your password?</a>
+                      <a class="d-lg-none btn btn-outline-dark" href="<?php echo base_url('admin/login'); ?>"><span><i class="fa fa-sign-in" aria-hidden="true"></i></span> Log in!</a>
+
+                    </div>
+
                     </div>
                   </div>
                 </form>
               </div>
             </div>
-            <div class="card d-md-down-none">
+            <div class="card text-center bg-primary text-white align-items-center d-md-down-none">
               <div class="card-body">
                 <h2>Log in</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                 <p>Sudah memiliki akun ?&nbsp; <br />
-                  <a class="btn btn-outline-dark btn-lg" href="<?php echo base_url('admin/login'); ?>"> Log in</a>
+                  <a class="btn btn-outline-dark btn-lg" href="<?php echo base_url('admin/login'); ?>"><span><i class="fa fa-sign-in" aria-hidden="true"></i></span> Log in</a>
                 </p>
               </div>
             </div>
