@@ -13,7 +13,6 @@
                         echo '<pre>';
                         print_r ($this->session->userdata());
 
-
                         print_r ($this->smarty_acl->get_admin()['id']);
                         echo '</pre>';
                         ?>
