@@ -28,8 +28,15 @@ class Welcome extends CI_Controller {
         $this->load->library('form_validation');
 
 	    $this->load->library('datatables');
-        //$this->logged_in();
+        $this->logged_in(FALSE);
         //$this->smarty_acl->authorized();
+    }
+
+    protected function logged_in($var)
+    {
+        if (!$this->smarty_acl->logged_in($var)) {
+            return redirect('/login');
+        }
     }
 
 	public function index()
@@ -38,6 +45,7 @@ class Welcome extends CI_Controller {
 	}
 
 	public function account()
+
 	{   $data['title'] = 'Account USER Welcome to CodeIgniter !';
 		$this->load->view('account', $data);
 	}
